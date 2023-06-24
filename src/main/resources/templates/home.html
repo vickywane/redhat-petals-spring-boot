@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="<c:url value="/resources/static/scripts/home.js" />" ></script>
+</head>
+
+<body>
+<div>
+    <!--    HEADER SECTION -->
+    <header class="h-16 flex items-center max-w-[1200px] m-auto">
+        <nav class="flex justify-between w-full px-6">
+            <div class="flex items-center">
+                <p class="text-xl font-semibold"> <a href="/" > E-Bikes </a> </p>
+            </div>
+
+            <ul class="flex">
+                <li class="mr-8 flex items-center ">
+                    <p class="text-base"> <a href="/"> Contact Support </a> </p>
+                </li>
+
+                <li class="mr-8 flex items-center">
+                    <p class="text-base"> <a href="/"> Try Bikes </a> </p>
+                </li>
+
+                <li>
+                    <a href="/login" >
+                        <button class="bg-[#3C5924;] px-6 h-12 rounded text-[#fff]">
+                            Management Console
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<!--    HERO SECTION -->
+    <section class="bg-[#FBF9E9] h-[350px]">
+        <div class="flex px-6 max-w-[1200px] m-auto h-full items-center">
+            <div class="max-w-[550px]">
+                <p class="text-3xl font-semibold"> Reliable Bikes You Can Trust </p>
+
+                <p class="mt-4">
+                    Delivering exceptional bike services and fostering a sustainable and inclusive cycling
+                    community for everyone.
+                </p>
+
+                <button class="mt-4 bg-[#3C5924;] w-[250px] h-12 rounded text-[#fff]">
+                    Purchase A Bike
+                </button>
+            </div>
+
+            <div>
+                 <img
+                    alt="Hero Banner Bike"
+                    src="../static/img/bike-cover.jpg"
+                    class=""
+                 />
+            </div>
+        </div>
+    </section>
+
+<!--  BIKES LIST  -->
+    <section class="mt-6" >
+            <div class="px-6 max-w-[1200px] m-auto" >
+                <p class="text-2xl" > All Available Bikes </p>
+
+
+            </div>
+    </section>
+</div>
+</body>
+</html>
