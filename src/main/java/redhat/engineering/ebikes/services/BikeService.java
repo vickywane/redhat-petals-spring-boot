@@ -7,6 +7,7 @@ import redhat.engineering.ebikes.repositories.BikeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
+import redhat.engineering.ebikes.repositories.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,12 +22,14 @@ public class BikeService {
     @Autowired
     BikeRepository bikeRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @PersistenceContext
     private EntityManager entityManager;
 
     @Transactional
     public List<Bike> retrieveBikes() {
-
         return bikeRepository.findAll();
     }
 
@@ -34,6 +37,11 @@ public class BikeService {
     public Optional<Bike> retrieveABike(Long bikeId) {
 
         return bikeRepository.findById(bikeId);
+    }
+
+    @Transactional
+    public List<Service_User> retrieveUsers(String filterBy) {
+        return userRepository.findAll();
     }
 
     @Transactional

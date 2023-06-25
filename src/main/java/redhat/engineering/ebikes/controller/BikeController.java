@@ -11,8 +11,6 @@ import redhat.engineering.ebikes.entities.Bike;
 import redhat.engineering.ebikes.entities.Service_User;
 import redhat.engineering.ebikes.services.BikeService;
 
-import java.io.Console;
-
 @Controller
 public class BikeController {
     @Autowired
@@ -61,11 +59,17 @@ public class BikeController {
         return "dashboard";
     }
 
+    @GetMapping("/users")
+    public String customers(Model model) {
+        model.addAttribute("service_users", bikeService.retrieveUsers("CUSTOMERS"));
+
+        return "users";
+    }
+
     @GetMapping("/purchase")
     public String purchase(@RequestParam Long bikeId, Service_User spring , Model model) {
         if (bikeService.retrieveABike(bikeId).isPresent()) {
             model.addAttribute("bike", bikeService.retrieveABike(bikeId));
-
             return "purchase";
         }
 

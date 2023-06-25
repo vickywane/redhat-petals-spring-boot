@@ -33,4 +33,20 @@ public class Service_User {
     public String getFullname() {
         return fullname;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUser_role() {
+        return user_role;
+    }
+
+    public Date getDateCreated() {
+        return date_created;
+    }
 }
