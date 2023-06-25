@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -23,9 +25,27 @@ public class BikeService {
     private EntityManager entityManager;
 
     @Transactional
-    public void insertBike(Bike bikeData) {
-        entityManager.createNativeQuery("INSERT INTO bikes(id, game_name, game_score, player_username, team_size) VALUES (?,?,?,?,?)")
-                .setParameter(1, bikeData.getId())
+    public List<Bike> retrieveBikes() {
+
+        return bikeRepository.findAll();
+    }
+
+    @Transactional
+    public Optional<Bike> retrieveABike(Long bikeId) {
+
+        return bikeRepository.findById(bikeId);
+    }
+
+    @Transactional
+    public void postBikeAd(Bike bikeData) {
+        entityManager.createNativeQuery("INSERT INTO bikes(id, name, model, price, warranty_status) VALUES (?,?,?,?,?)")
+//                .setParameter(1, bikeData.getId())
+                .setParameter(1, 10)
+                .setParameter(2, bikeData.getName())
+                .setParameter(3, bikeData.getModel())
+//                .setParameter(4, bikeData.getPrice())
+                .setParameter(4, 20)
+                .setParameter(5, bikeData.getWarranty_status())
                 .executeUpdate();
     }
 

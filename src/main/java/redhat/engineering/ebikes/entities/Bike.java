@@ -31,4 +31,24 @@ public class Bike {
     public Object getId() {
         return id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getWarranty_status() {
+        return warranty_status;
+    }
+
+    public Byte getImage() {
+        return image;
+    }
 }

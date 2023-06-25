@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import redhat.engineering.ebikes.entities.Bike;
 import redhat.engineering.ebikes.entities.Service_User;
 import redhat.engineering.ebikes.services.BikeService;
 
@@ -17,7 +20,8 @@ public class BikeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        //  model.addAttribute("bikes", bikeService.getBikes());
+        model.addAttribute("bikes", bikeService.retrieveBikes());
+
         return "home";
     }
 
@@ -51,17 +55,34 @@ public class BikeController {
 
     // CONSOLE
     @GetMapping("/dashboard")
-    public String dashboard(Service_User userData, Model model) {
+    public String dashboard(Model model) {
+        model.addAttribute("bikes", bikeService.retrieveBikes());
+
         return "dashboard";
     }
 
     @GetMapping("/purchase")
-    public String purchase(Service_User userData, Model model) {
-        return "purchase";
+    public String purchase(@RequestParam Long bikeId, Service_User spring , Model model) {
+        if (bikeService.retrieveABike(bikeId).isPresent()) {
+            model.addAttribute("bike", bikeService.retrieveABike(bikeId));
+
+            return "purchase";
+        }
+
+        return "redirect:/dashboard";
+    }
+
+    @PostMapping("/create-bike")
+    public String postBikeAd(Bike bikeData, Model model) {
+        model.addAttribute("bike", new Bike());
+        bikeService.postBikeAd(bikeData);
+
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/create-bike")
-    public String createBike(Service_User userData, Model model) {
+    public String createBike(@ModelAttribute Bike bike, Model model) {
+        model.addAttribute("bike", new Bike());
         return "create-bike";
     }
 }
