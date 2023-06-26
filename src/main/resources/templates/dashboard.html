@@ -80,7 +80,7 @@
         <div class="p-4 sm:ml-64">
             <div class="flex justify-between">
                 <div class="flex items-center">
-                    <p th:text="'Showing All ' + ${bikes.size()} + ' Bikes'" > </p>
+                    <p th:text="'Showing All ' + ${bikes.size()} + ' Bikes'"></p>
                 </div>
 
                 <a href="/create-bike">
@@ -90,16 +90,25 @@
                 </a>
             </div>
 
-            <ul style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))" class="mt-4 grid">
+            <ul style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))" class="mt-8 gap-16 grid">
                 <li th:each="bike: ${bikes}">
                     <div class="border-2 w-[300px]">
                         <div class="w-full h-[150px] relative">
-                            <img src="/application.properties" class="w-full" alt="bike"/>
+                            <img src="https://res.cloudinary.com/dkfptto8m/image/upload/v1687810622/bike-cover.jpg" class="w-full" alt="bike"/>
 
                             <div class="absolute right-0 top-0">
                                 <button class="bg-[#3C5924;] text-sm w-full px-6 h-[30px] text-[#fff]">
                                     Contact Support
                                 </button>
+                            </div>
+
+                            <div class="absolute left-0 bottom-0">
+                                <a th:href="'/bike/update?id=' + ${bike.id}" >
+                                    <button class="bg-[#757872;] text-sm w-full px-6 h-[30px] text-[#fff]">
+                                        Edit
+                                    </button>
+                                </a>
+
                             </div>
                         </div>
 
@@ -120,7 +129,7 @@
                                 </div>
                             </div>
 
-                            <a th:href="'/purchase?bikeId=' + ${bike.id}">
+                            <a th:href="'/order?bikeId=' + ${bike.id}">
                                 <button class="bg-[#3C5924;]  w-full px-6 h-[40px] rounded text-[#fff]">
                                     Purchase Bike
                                 </button>

@@ -11,8 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="<c:url value="
-    /resources/static/scripts/home.js" />" ></script>
 </head>
 
 <body>
@@ -49,52 +47,54 @@
             <h1 class="mt-4 mb-4 text-3xl text-center"> Purchase Bike </h1>
             <hr/>
 
-            <div class="p-6" >
-                <p th:text="${bike.get().name}" class="text-2xl" > NAME </p>
-                <p th:text="'$' + ${bike.get().price}" class="text-xl text-gray-500" > PRICE </p>
+            <div class="p-6">
+                <p th:text="${bike.get().name}" class="text-2xl"> NAME </p>
+                <p th:text="'$' + ${bike.get().price}" class="text-xl text-gray-500"> PRICE </p>
             </div>
 
-            <form class="space-y-4 md:space-y-6 mx-6" action="#">
+            <form
+                    method="post"
+                  th:action="@{/purchase/__${bike.get().id}__}"
+                  class="space-y-4 md:space-y-6 mx-6"
+                  action="#">
                 <div>
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Cardholder Name</label>
                     <input type="text" name="name" id="name"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="name@company.com" required="">
+                           class="bg-gray-50 border 7border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="E.g: name@company.com" required="">
                 </div>
 
                 <div>
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Card Number</label>
-                    <input type="email" name="email" id="email"
+                    <label for="number" class="block mb-2 text-sm font-medium text-gray-900">Card Number</label>
+                    <input type="number" name="number" id="number"
                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="name@company.com" required="">
+                           placeholder="E.g: 5105105105105100" required="">
                 </div>
 
-                <div class="grid grid-cols-2 gap-8" >
+                <div class="grid grid-cols-2 gap-8">
                     <div>
                         <label for="cvv" class="block mb-2 text-sm font-medium text-gray-900">Card CVV</label>
-                        <input type="number" name="cvv" id="cvv" placeholder="•••"
+                        <input type="number" name="cvv" id="cvv" placeholder="E.g 000"
                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                required="">
                     </div>
 
                     <div>
                         <label for="validity" class="block mb-2 text-sm font-medium text-gray-900">Card Validity</label>
-                        <input type="number" name="validity" id="validity" placeholder="00/00"
+                        <input type="number" name="validity" id="validity" placeholder="E.g 00/00"
                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                required="">
                     </div>
                 </div>
 
-
-
                 <div>
                     <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Delivery Address</label>
-                    <input type="text" name="address" id="address" placeholder="2b, John Road Avenue"
+                    <input type="text" name="address" id="address" placeholder="E.g 2b, John Road Avenue"
                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                            required="">
                 </div>
 
-                <div class="mt-6" >
+                <div class="mt-6">
                     <a href="/">
                         <button
                                 th:text="'Confirm Purchase Of ' + ${bike.get().name}"

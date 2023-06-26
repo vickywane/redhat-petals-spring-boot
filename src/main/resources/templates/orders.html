@@ -60,14 +60,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                           class="flex items-center p-2 text-gray-900 rounded-lg text-white hover:text-white bg-[#3C5924;]">
+                        <a href="/users"
+                           class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
                             <span class="flex-1 ml-3 whitespace-nowrap">All Users</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                           class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
+                        <a href="/orders"
+                           class="flex items-center p-2 text-gray-900 text-white rounded-lg hover:text-white bg-[#3C5924;]">
                             <span class="flex-1 ml-3 whitespace-nowrap">Customer Orders</span>
                         </a>
                     </li>
@@ -77,8 +77,8 @@
 
         <div class="p-4 sm:ml-64">
             <div>
-                <div class="flex items-center">
-                    <p class="text-2xl font-semibold"> Customers </p>
+                <div class="flex items-center mb-6">
+                    <p class="text-2xl font-semibold"> Customer Orders </p>
                 </div>
                 <hr/>
                 <br/>
@@ -89,13 +89,13 @@
                         <thead class="text-lg text-[#fff] uppercase bg-[#757872]">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                User ID
+                                Order ID
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Name
+                                Product ID
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Email
+                                Customer ID
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Role
@@ -103,33 +103,32 @@
                             <th scope="col" class="px-6 py-3">
                                 Date Created
                             </th>
+
                             <th scope="col" class="px-6 py-3">
-                                Orders
+                                Action
                             </th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        <tr th:each="user: ${service_users}" class="bg-white border-b">
-                            <th th:text="${user.id}" scope="row"
+                        <tr th:each="order: ${orders}" class="bg-white border-b">
+                            <th th:text="${order.id}" scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
 
                             </th>
-                            <td th:text="${user.fullname}" class="px-6 py-4">
+                            <td th:text="${order.productId}" class="px-6 py-4">
 
                             </td>
-                            <td th:text="${user.email}" class="px-6 py-4">
+                            <td th:text="${order.customerId}" class="px-6 py-4">
                             </td>
-                            <td th:text="${user.user_role}" class="px-6 py-4">
-                            </td>
-                            <td th:text="${user.dateCreated}" class="px-6 py-4">
+                            <td th:text="${order.dateCreated}" class="px-6 py-4">
                             </td>
                             <td class="px-6 py-4">
                                 0
                             </td>
                             <td class="px-6 py-4">
-                                <button>
-                                    DELETE
+                                <button class="text-[red]" >
+                                    CANCEL ORDER
                                 </button>
                             </td>
                         </tr>

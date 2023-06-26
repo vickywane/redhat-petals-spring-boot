@@ -1,5 +1,6 @@
 package redhat.engineering.ebikes.entities;
-import javax.persistence.*;
+
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -48,7 +49,36 @@ public class Bike {
         return warranty_status;
     }
 
+    public Date getDate_created() {
+        return date_created;
+    }
+
     public Byte getImage() {
         return image;
+    }
+
+    //  SETTERS
+    public void setWarrantyStatus(String status) {
+        this.warranty_status = status;
+    }
+
+    public void setImage(Byte image) {
+        this.image = image;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
