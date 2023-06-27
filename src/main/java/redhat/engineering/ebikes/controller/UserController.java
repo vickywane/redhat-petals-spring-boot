@@ -42,7 +42,7 @@ public class UserController {
         return "redirect:/dashboard";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/dashboard/users")
     public String customers(Model model) {
         model.addAttribute("service_users", userService.retrieveUsers("CUSTOMERS"));
 

@@ -32,10 +32,10 @@ public class SecurityConfig implements UserDetailsService {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/**").permitAll()
+                .requestMatchers("/", "/login", "/signup").permitAll()
                 .and()
                 .authorizeHttpRequests()
-//                .requestMatchers("/create-bike", "/users", "/dashboard", "/update").authenticated()
+                .requestMatchers("/dashboard/**").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")

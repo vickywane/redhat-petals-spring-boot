@@ -64,13 +64,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/users"
+                        <a href="/dashboard/users"
                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
                             <span class="flex-1 ml-3 whitespace-nowrap">All Users</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/orders"
+                        <a href="/dashboard/orders"
                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
                             <span class="flex-1 ml-3 whitespace-nowrap">Customer Orders</span>
                         </a>
@@ -85,7 +85,7 @@
                     <p th:text="'Showing All ' + ${bikes.size()} + ' Bikes'"></p>
                 </div>
 
-                <a href="/create-bike">
+                <a href="/dashboard/bike/create-bike">
                     <button class="bg-[#3C5924;] px-6 h-12 rounded text-[#fff]">
                         Post A Bike
                     </button>
@@ -144,13 +144,13 @@
                     </td>
                     <td class="px-6 py-4 flex">
                         <button class="text-[#757872;] mr-6">
-                            <a th:href="'/bike/update?id=' + ${bike.id}" >
+                            <a th:href="'dashboard/bike/edit?id=' + ${bike.id}" >
                                 EDIT
                             </a>
                         </button>
 
                         <button class="text-[red]">
-                            <a th:href="'/user/delete/'+${bike.id}" >
+                            <a th:href="'/bike/delete/'+${bike.id}" >
                                 DELETE
                             </a>
                         </button>

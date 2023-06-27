@@ -29,7 +29,7 @@ public class BikeController {
         return "dashboard";
     }
 
-    @GetMapping("/purchase")
+    @GetMapping("dashboard/bike/purchase")
     public String purchase(@RequestParam Long bikeId, Model model) {
         if (bikeService.retrieveABike(bikeId).isPresent()) {
             model.addAttribute("bike", bikeService.retrieveABike(bikeId));
@@ -61,13 +61,13 @@ public class BikeController {
         return "redirect:/dashboard";
     }
 
-    @GetMapping("/create-bike")
+    @GetMapping("dashboard/bike/create-bike")
     public String createBike(Model model) {
         model.addAttribute("bike", new Bike());
         return "create-bike";
     }
 
-    @GetMapping("/bike/update")
+    @GetMapping("dashboard/bike/edit")
     public String updateBike(@RequestParam Long id, Model model) {
         if (bikeService.retrieveABike(id).isPresent()) {
             model.addAttribute("bike_form", new Bike());

@@ -64,13 +64,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/users"
+                        <a href="/dashboard/users"
                            class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
                             <span class="flex-1 ml-3 whitespace-nowrap">All Users</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/orders"
+                        <a href="#"
                            class="flex items-center p-2 text-gray-900 text-white rounded-lg hover:text-white bg-[#3C5924;]">
                             <span class="flex-1 ml-3 whitespace-nowrap">Customer Orders</span>
                         </a>
@@ -107,10 +107,6 @@
                             <th scope="col" class="px-6 py-3">
                                 Date Created
                             </th>
-
-                            <th scope="col" class="px-6 py-3">
-                                Action
-                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -121,7 +117,6 @@
 
                             </th>
                             <td th:text="${order.productId}" class="px-6 py-4">
-
                             </td>
                             <td th:text="${order.customerId}" class="px-6 py-4">
                             </td>
@@ -129,11 +124,6 @@
                             </td>
                             <td class="px-6 py-4">
                                 0
-                            </td>
-                            <td class="px-6 py-4">
-                                <button class="text-[red]" >
-                                    CANCEL ORDER
-                                </button>
                             </td>
                         </tr>
                         </tbody>
