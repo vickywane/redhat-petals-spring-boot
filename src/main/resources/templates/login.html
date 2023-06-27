@@ -11,8 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="<c:url value="
-    /resources/static/scripts/home.js" />" ></script>
 </head>
 
 <body>
@@ -49,7 +47,7 @@
             <h1 class="mt-4 mb-4 text-center"> Login To Console  </h1>
             <hr/>
 
-            <form class="space-y-4 md:space-y-6 mx-6" action="#">
+            <form class="space-y-4 md:space-y-6 mx-6" method="post" action="login">
                 <div>
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your Full Name</label>
                     <input type="email" name="email" id="email"

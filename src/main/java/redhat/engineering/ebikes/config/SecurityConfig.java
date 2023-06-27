@@ -35,9 +35,11 @@ public class SecurityConfig implements UserDetailsService {
                 .requestMatchers("/**").permitAll()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/create-bike").authenticated()
+//                .requestMatchers("/create-bike", "/users", "/dashboard", "/update").authenticated()
                 .and()
                 .formLogin()
+                .loginPage("/login")
+                .permitAll()
                 .and().build();
     }
 
@@ -55,15 +57,15 @@ public class SecurityConfig implements UserDetailsService {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider authenticationProvider=new DaoAuthenticationProvider();
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

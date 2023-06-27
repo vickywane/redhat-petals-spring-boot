@@ -1,7 +1,6 @@
 package redhat.engineering.ebikes.services;
 
 import redhat.engineering.ebikes.entities.Bike;
-import redhat.engineering.ebikes.entities.Service_User;
 import redhat.engineering.ebikes.repositories.BikeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import jakarta.transaction.*;
 
 import java.util.List;
 import java.util.Optional;
-
 
 @Service
 @Configurable
@@ -38,9 +36,8 @@ public class BikeService {
         return bikeRepository.findById(bikeId);
     }
 
-    @Transactional
-    public List<Service_User> retrieveUsers(String filterBy) {
-        return userRepository.findAll();
+    public void deleteABike(Long bikeId) {
+        bikeRepository.deleteById(bikeId);
     }
 
     @Transactional
@@ -48,7 +45,7 @@ public class BikeService {
         entityManager.createNativeQuery("INSERT INTO bikes(name, model, price, warranty_status) VALUES (?,?,?,?)")
                 .setParameter(1, bikeData.getName())
                 .setParameter(2, bikeData.getModel())
-                .setParameter(3, 20)
+                .setParameter(3, bikeData.getPrice())
                 .setParameter(4, bikeData.getWarranty_status())
                 .executeUpdate();
     }
@@ -61,6 +58,4 @@ public class BikeService {
                 .setParameter(3, bike.getPrice())
                 .executeUpdate());
     }
-
-    public BikeService() {}
 }

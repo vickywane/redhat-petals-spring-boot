@@ -92,54 +92,72 @@
                 </a>
             </div>
 
-            <ul style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))" class="mt-8 gap-16 grid">
-                <li th:each="bike: ${bikes}">
-                    <div class="border-2 w-[300px]">
-                        <div class="w-full h-[150px] relative">
-                            <img src="https://res.cloudinary.com/dkfptto8m/image/upload/v1687810622/bike-cover.jpg" class="w-full" alt="bike"/>
+            <table class="mt-8 w-full text-sm text-left text-gray-500">
+                <thead class="text-lg text-[#fff] uppercase bg-[#757872]">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Model
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Warranty
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Price
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Date Created
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Stock
+                    </th>
 
-                            <div class="absolute right-0 top-0">
-                                <button class="bg-[#3C5924;] text-sm w-full px-6 h-[30px] text-[#fff]">
-                                    Contact Support
-                                </button>
-                            </div>
+                    <th scope="col" class="px-6 py-3">
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
 
-                            <div class="absolute left-0 bottom-0">
-                                <a th:href="'/bike/update?id=' + ${bike.id}" >
-                                    <button class="bg-[#757872;] text-sm w-full px-6 h-[30px] text-[#fff]">
-                                        Edit
-                                    </button>
-                                </a>
+                <tr th:each="bike: ${bikes}" class="bg-white border-b">
+                    <th th:text="${bike.id}" scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    </th>
+                    <td th:text="${bike.name}" class="px-6 py-4">
 
-                            </div>
-                        </div>
-
-                        <div class="p-4">
-                            <div class="mb-4">
-                                <p>
-                                    <span class="text-xl font-semibold mb-2" th:text="${bike.name}">  </span>
-                                    <span class="text-gray-400 ml-1" th:text="'(' + ${bike.model} + ')'">  </span>
-                                </p>
-
-                                <div class="flex justify-between">
-                                    <p class="text-lg" th:text="'$' + ${bike.price}"></p>
-
-                                    <div>
-                                        <p><span class="font-semibold"> Warranty: </span> <span
-                                                th:text="${bike.warranty_status}">  </span></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a th:href="'/order?bikeId=' + ${bike.id}">
-                                <button class="bg-[#3C5924;]  w-full px-6 h-[40px] rounded text-[#fff]">
-                                    Purchase Bike
-                                </button>
+                    </td>
+                    <td th:text="${bike.model}" class="px-6 py-4">
+                    </td>
+                    <td th:text="${bike.warranty_status}" class="px-6 py-4">
+                    </td>
+                    <td th:text="${bike.price}" class="px-6 py-4">
+                    </td>
+                    <td th:text="${bike.date_created}" class="px-6 py-4">
+                    </td>
+                    <td class="px-6 py-4">
+                        0
+                    </td>
+                    <td class="px-6 py-4 flex">
+                        <button class="text-[#757872;] mr-6">
+                            <a th:href="'/bike/update?id=' + ${bike.id}" >
+                                EDIT
                             </a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                        </button>
+
+                        <button class="text-[red]">
+                            <a th:href="'/user/delete/'+${bike.id}" >
+                                DELETE
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

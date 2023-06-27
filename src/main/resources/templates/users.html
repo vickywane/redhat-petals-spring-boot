@@ -136,8 +136,10 @@
                                 0
                             </td>
                             <td class="px-6 py-4">
-                                <button class="text-[red]" >
-                                    DELETE
+                                <button class="text-[red]">
+                                    <a th:href="'/user/delete/'+${user.id}" >
+                                        DELETE
+                                    </a>
                                 </button>
                             </td>
                         </tr>

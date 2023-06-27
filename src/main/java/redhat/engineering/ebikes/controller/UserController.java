@@ -5,9 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import redhat.engineering.ebikes.entities.Service_User;
 import redhat.engineering.ebikes.services.UserService;
+
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -44,6 +47,17 @@ public class UserController {
         model.addAttribute("service_users", userService.retrieveUsers("CUSTOMERS"));
 
         return "users";
+    }
+
+    @GetMapping("/user/delete/{userId}")
+    public String deleteUser(@PathVariable Long userId, Model model) {
+        Optional<Service_User> retrievedUser = userService.retrieveAUser(userId) ;
+
+        if (retrievedUser.isPresent()) {
+            userService.deleteAUser(userId);
+        }
+
+        return "redirect:/users";
     }
 }
 

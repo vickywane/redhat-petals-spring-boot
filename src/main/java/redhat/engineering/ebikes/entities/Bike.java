@@ -1,6 +1,8 @@
 package redhat.engineering.ebikes.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.util.Date;
 
 @Entity
@@ -11,21 +13,25 @@ public class Bike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Bike's name cannot be empty.")
     @Column(name = "name")
     private String name;
 
+    @NotNull(message = "Bike's model cannot be empty.")
     @Column(name = "model")
     private String model;
 
     @Column(name = "date_created")
     private Date date_created;
 
+    @NotNull(message = "Bike's price cannot be empty.")
     @Column(name = "price")
     private Integer price;
 
     @Column(name = "image")
     private Byte image;
 
+    @NotNull(message = "Bike's warranty status cannot be empty.")
     @Column(name = "warranty_status")
     private String warranty_status;
 

@@ -10,6 +10,7 @@ import redhat.engineering.ebikes.repositories.UserRepository;
 import jakarta.persistence.*;
 import jakarta.transaction.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -33,6 +34,15 @@ public class UserService {
     public List<Service_User> retrieveUsers(String filterBy) {
         return userRepository.findAll();
     }
+
+    public Optional<Service_User> retrieveAUser(Long userId) {
+        return userRepository.findById(userId);
+    }
+
+    public void deleteAUser(Long userId) {
+         userRepository.deleteById(userId);
+    }
+
     @Transactional
     public void createUser(Service_User userData) {
         entityManager.createNativeQuery("INSERT INTO service_user(fullname, email, user_role, password) VALUES (?,?,?,?)")

@@ -68,7 +68,7 @@ public class BikeController {
     }
 
     @GetMapping("/bike/update")
-    public String updateBike(@RequestParam Long id, Service_User spring , Model model) {
+    public String updateBike(@RequestParam Long id, Model model) {
         if (bikeService.retrieveABike(id).isPresent()) {
             model.addAttribute("bike_form", new Bike());
             model.addAttribute("bike", bikeService.retrieveABike(id));
@@ -79,11 +79,20 @@ public class BikeController {
     }
 
     @PostMapping("/bike/update")
-    public String submitBikeUpdateForm(@RequestParam Long id, Service_User spring , Model model) {
+    public String submitBikeUpdateForm(@RequestParam Long id, Model model) {
         if (bikeService.retrieveABike(id).isPresent()) {
             model.addAttribute("bike", bikeService.retrieveABike(id));
             return "update-bike";
         }
+
+        return "redirect:/dashboard";
+    }
+
+    @GetMapping("/bike/delete/{bikeId}")
+    public String deleteBike(@PathVariable Long bikeId, Model model) {
+        Optional<Bike> singleBike = bikeService.retrieveABike(bikeId);
+
+        singleBike.ifPresent(bike -> bikeService.deleteABike((Long) bike.getId()));
 
         return "redirect:/dashboard";
     }
